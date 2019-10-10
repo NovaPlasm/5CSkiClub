@@ -12,7 +12,7 @@ import App from "./App";
 
 const history = createBrowserHistory();
 const client = new ApolloClient({
-    uri: "http://localhost:3000/graphql"
+    uri: "http://localhost:3001/graphql"
 });
 
 const Root = () => (
