@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import styled from 'styled-components';
 import Background from './assets/something.png';
-import video from './assets/edit.mp4';
+// import video from './assets/edit.mp4';
 import Logo from './assets/logo.png';
 import NavBar from './common/NavBar';
 

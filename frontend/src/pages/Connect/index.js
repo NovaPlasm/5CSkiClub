@@ -9,11 +9,16 @@ export default class Connect extends React.Component {
     }
 
     componentWillMount() {
-        // https://public-api.wordpress.com/rest/v1.1/sites/5cskisnowboard.home.blog/posts/?category=Connect
-
         axios.get('https://public-api.wordpress.com/rest/v1.1/sites/5cskisnowboard.home.blog/posts/?category=Connect').then(data => {
             this.setState({
-                leadership: data.data.posts
+                leadership: data.data.posts.map((leader,index) => ({
+                    id: leader.ID,
+                    index,
+                    name: leader.title,
+                    headshot: leader.featured_image,
+                    actionshot: leader.content.split('###</p>')[0].split('src="')[1].split('"')[0],
+                    content: leader.content.split('###</p>')[1]
+                }))
             });
         });
 
@@ -23,9 +28,12 @@ export default class Connect extends React.Component {
 
         return (
             this.state.leadership.map(leader =>
-                <li key={leader.ID}>
-                    <img src={leader['featured_image']} alt={leader.title} />
-                    <h2>{leader.title}</h2>
+                <li key={leader.id}>
+                    <Images odd={leader.index%2===1}>
+                        <img src={leader.headshot} alt={leader.name} />
+                        <img src={leader.actionshot} alt={leader.name} />
+                    </Images>
+                    <h2>{leader.name}</h2>
                     <p dangerouslySetInnerHTML={{__html: leader.content}} />
                 </li>
             )
@@ -46,6 +54,20 @@ export default class Connect extends React.Component {
     }
 }
 
+const Images = styled.section`
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: ${props => props.odd ? 'row-reverse' : 'row'};
+
+    img {
+        display: block !important;
+        max-height: 30rem !important;
+        width: auto;
+        margin: 0 !important;
+    }
+`;
+
 const Div = styled.div`
     display: grid;
     max-width: 90rem;
@@ -59,16 +81,17 @@ const Div = styled.div`
             text-align: center;
             margin-bottom: 5rem;
 
+            h2 {
+                margin-bottom: 0;
+            }
+
+            p {
+                margin-top: 0;
+            }
+
             h3 {
                 margin-top: 0;
                 text-align: center;
-            }
-
-            img {
-                margin: 0 auto;
-                width: 15rem;
-                height: 15rem;
-                border-radius: 20rem;
             }
         }
     }
