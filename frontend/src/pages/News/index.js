@@ -16,10 +16,9 @@ export default class News extends React.Component {
                 news: data.data.posts
             });
         });
-
     }
 
-    renderFaces() {
+    renderLeaders() {
 
         return (
             this.state.news.map(post =>
@@ -34,12 +33,11 @@ export default class News extends React.Component {
 
     render() {
 
-        console.log(this.state.news)
         return (
             <Div>
                 <h1>Latest Lines News</h1>
                 <ul>
-                    {this.renderFaces()}
+                    {this.renderLeaders()}
                 </ul>
             </Div>
         );
@@ -49,7 +47,7 @@ export default class News extends React.Component {
 const Div = styled.div`
     display: grid;
     max-width: 90rem;
-    margin: 5rem auto 10rem auto;
+    margin: 7rem auto 0 auto;
 
     ul {
         list-style: none;

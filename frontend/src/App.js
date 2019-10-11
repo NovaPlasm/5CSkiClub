@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import styled from 'styled-components';
-import Background from './assets/something.png';
-// import video from './assets/edit.mp4';
 import Logo from './assets/logo.png';
 import NavBar from './common/NavBar';
 
@@ -42,7 +40,7 @@ export default class App extends Component {
                 <Route path="/trips" component={Trips} />
                 <Route path="/gallery" component={Gallery} />
                 <Route path="/connect" component={Connect} />
-                <Route path="/info" component={ClubInfo} />
+                <Route path="/info/:type" component={ClubInfo} />
                 <Route path="/news" component={News} />
                 <Route path="*" component={NotFound} />
               </Switch>

@@ -17,10 +17,11 @@ export default class Home extends React.Component {
 const Div = styled.div`
     display: grid;
     max-width: 90rem;
-    margin: 10rem auto;
+    margin: 7rem auto 0 auto;
 
     h1 {
         margin-bottom: 1rem;
+        margin-top: 0;
         text-align: center;
     }
 

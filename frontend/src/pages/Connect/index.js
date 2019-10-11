@@ -41,8 +41,6 @@ export default class Connect extends React.Component {
     }
 
     render() {
-
-        console.log(this.state.leadership)
         return (
             <Div>
                 <h1>Connect with our leadership</h1>
@@ -71,7 +69,7 @@ const Images = styled.section`
 const Div = styled.div`
     display: grid;
     max-width: 90rem;
-    margin: 5rem auto 10rem auto;
+    margin: 7rem auto 0 auto;
 
     ul {
         list-style: none;
