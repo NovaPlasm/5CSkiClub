@@ -23,8 +23,8 @@ export default class App extends Component {
           <Main home>
             <div className="layer">
               <div className="videoContainer">
-                <video autoPlay loop muted poster={Background}>
-                  <source src={video} type='video/mp4' />
+                <video autoPlay loop muted poster={'https://i.imgur.com/7FbfWL2.png'}>
+                  <source src={'https://www.dropbox.com/s/s3ymosyhd08wct6/edit.mp4?dl=1'} type='video/mp4' />
                 </video>
               </div>
               <img src={Logo} alt="LINES" />
