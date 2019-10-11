@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default class Gallary extends React.Component {
+export default class ClubInfo extends React.Component {
 
     render() {
 
         return (
             <Div>
-                <h1>Gallery</h1>
+                <h1>Register and Join Trips Here!</h1>
                 <h3>This page is currently under construction.</h3>
             </Div>
         );
