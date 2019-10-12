@@ -30,7 +30,7 @@ export default class Connect extends React.Component {
             this.state.leadership.map(leader =>
                 <li key={leader.id}>
                     <Images odd={leader.index%2===1}>
-                        <img src={leader.headshot} alt={leader.name} />
+                        <img className="headshot" src={leader.headshot} alt={leader.name} />
                         <img src={leader.actionshot} alt={leader.name} />
                     </Images>
                     <h2>{leader.name}</h2>
@@ -70,6 +70,11 @@ const Images = styled.section`
 
         @media only screen and (max-width: 52em) {
             margin: 0 auto !important;
+            max-height: 50% !important;
+
+            &.headshot {
+                border-radius: 50rem;
+            }
         }
     }
 `;

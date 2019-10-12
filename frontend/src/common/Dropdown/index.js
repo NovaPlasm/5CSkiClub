@@ -75,7 +75,7 @@ const DropdownStyle = styled.p`
     font-size: 1.6rem;
     cursor: pointer;
     margin: 0;
-    font-family: 'MS Shell Dlg 2';
+    font-family: 'MS Shell Dlg 2', Arial, Helvetica, sans-serif;
     text-align: center;
 
     ${props => type(props.type)}
