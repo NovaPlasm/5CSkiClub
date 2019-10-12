@@ -57,12 +57,20 @@ const Images = styled.section`
     display: flex;
     justify-content: center;
     flex-direction: ${props => props.odd ? 'row-reverse' : 'row'};
+    @media only screen and (max-width: 52em) {
+        flex-direction: column;
+    }
 
     img {
         display: block !important;
         max-height: 30rem !important;
+        max-width: 100%;
         width: auto;
         margin: 0 !important;
+
+        @media only screen and (max-width: 52em) {
+            margin: 0 auto !important;
+        }
     }
 `;
 

@@ -48,6 +48,7 @@ const Div = styled.div`
     display: grid;
     max-width: 90rem;
     margin: 7rem auto 0 auto;
+    padding: 0 2.7rem;
 
     ul {
         list-style: none;

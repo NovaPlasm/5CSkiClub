@@ -54,6 +54,11 @@ const Div = styled.div`
     display: grid;
     max-width: 90rem;
     margin: 7rem auto 0 auto;
+    padding: 0 2.7rem;
+
+    @media only screen and (max-width: 48em) {
+        max-width: 100%;
+    }
 
     h1 {
         margin-bottom: 1rem;
@@ -69,6 +74,7 @@ const Div = styled.div`
     figure {
         img {
             max-height: none !important;
+            max-width: 100%;
         }
         &.aligncenter {
             figcaption {

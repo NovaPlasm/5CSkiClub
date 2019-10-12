@@ -78,6 +78,10 @@ const Main = styled.main`
       video {
         max-width: 100%;
       }
+
+      @media only screen and (max-width: 48em) {
+        display: none;
+      }
     }
 
     img {
