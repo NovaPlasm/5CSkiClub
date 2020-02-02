@@ -1,0 +1,36 @@
+{
+  "name": "5cskisnowboard",
+  "version": "1.0.0",
+  "description": "website for 5c ski and snowboard club",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"yarn run server\" \"yarn run client\""
+  },
+  "author": "Beau Taylor-Ladd",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/core": "^4.9.0",
+    "@material-ui/icons": "^4.5.1",
+    "aws-sdk": "^2.604.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.0.2",
+    "dynamoose": "^1.11.1",
+    "express": "^4.17.1",
+    "is-empty": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.8.7",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "redux-form-material-ui": "^4.3.4",
+    "uuid": "^3.3.3",
+    "validator": "^12.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
