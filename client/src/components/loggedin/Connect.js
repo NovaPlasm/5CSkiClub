@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import { GridContainer, GridItem } from "../common/Grid";
 import { Card, CardBody, CardHeader } from "../common/Card";
 
@@ -7,23 +8,30 @@ const hardCoded = {"posts":[{id:62,name:"Kirill Myagkov",actionshot:"https://5cs
 
 export default class Connect extends React.Component {
   state = {
-    leadership: hardCoded.posts
+    leadership: []
   }
 
-  // componentWillMount() {
-  //   axios.get('https://public-api.wordpress.com/rest/v1.1/sites/5cskisnowboard.home.blog/posts/?category=Connect').then(data => {
-  //     this.setState({
-  //       leadership: data.data.posts.map((leader,index) => ({
-  //         id: leader.ID,
-  //         index,
-  //         name: leader.title,
-  //         headshot: leader.featured_image,
-  //         actionshot: leader.content.split('###</p>')[0].split('src="')[1].split('"')[0],
-  //         content: leader.content.split('###</p>')[1]
-  //       }))
-  //     });
-  //   });
-  // }
+  componentWillMount() {
+    axios({
+      method: 'get',
+      url: 'https://public-api.wordpress.com/rest/v1.1/sites/5cskisnowboard.home.blog/posts/?category=Connect',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': null,
+      }
+    }).then(data => {
+      this.setState({
+        leadership: data.data.posts.map((leader,index) => ({
+          id: leader.ID,
+          index,
+          name: leader.title,
+          headshot: leader.featured_image,
+          actionshot: leader.content.split('###</p>')[0].split('src="')[1].split('"')[0],
+          content: leader.content.split('###</p>')[1]
+        }))
+      });
+    });
+  }
 
   renderFaces() {
     return (

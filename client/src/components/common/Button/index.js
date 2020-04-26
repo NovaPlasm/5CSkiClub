@@ -28,7 +28,7 @@ export default class Button extends React.Component {
 function type(input) {
     if (!input || input === 'default') {
         return css`
-            padding: 0.5rem 1rem;
+            padding: 0.8rem 1.2rem;
             border: 0.1rem solid ${props => props.theme.primary};
             border-radius: 100rem;
             background-color: ${props => props.theme.primary};

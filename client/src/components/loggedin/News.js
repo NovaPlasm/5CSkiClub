@@ -1,5 +1,5 @@
 import React from "react";
-// import axios from "axios";
+import axios from "axios";
 
 import { GridContainer, GridItem } from "../common/Grid";
 import { Card, CardBody, CardHeader } from "../common/Card";
@@ -13,13 +13,20 @@ export default class News extends React.Component {
     news: hardCoded.posts
   }
 
-  // componentWillMount() {
-  //   axios.get('https://public-api.wordpress.com/rest/v1.1/sites/5cskisnowboard.home.blog/posts/?category=News').then(data => {
-  //     this.setState({
-  //       news: data.data.posts
-  //     });
-  //   });
-  // }
+  componentWillMount() {
+    axios({
+      method: 'get',
+      url: 'https://public-api.wordpress.com/rest/v1.1/sites/5cskisnowboard.home.blog/posts/?category=News',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': null,
+      }
+    }).then(data => {
+      this.setState({
+        news: data.data.posts
+      });
+    });
+  }
 
   render() {
 

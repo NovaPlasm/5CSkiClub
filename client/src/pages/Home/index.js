@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
+import { Button } from '@material-ui/core';
 
 export default class Home extends React.Component {
 
@@ -9,6 +11,17 @@ export default class Home extends React.Component {
             <Div>
                 <h1>5C Ski and Snowboard Club</h1>
                 <h3>The Ski and Snowboard Club for the Claremont Colleges</h3>
+                <RegisterSection>
+                    <Link to="/login">
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            className="submit"
+                            >
+                            Sign In To Access All Features!
+                        </Button>
+                    </Link>
+                </RegisterSection>
             </Div>
         );
     }
@@ -28,5 +41,16 @@ const Div = styled.div`
     h3 {
         margin-top: 0;
         text-align: center;
+    }
+`;
+
+const RegisterSection = styled.section`
+    display: flex;
+    flex-direction: column;
+    margin: 15rem auto;
+    justify-content: center;
+
+    a {
+        color: #000;
     }
 `;
