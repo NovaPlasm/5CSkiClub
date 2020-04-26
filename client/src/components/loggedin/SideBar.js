@@ -50,15 +50,15 @@ class SideBar extends React.Component {
               </ListItem>
             </NavLink>
             <NavLink
-              to="/trips"
-              className="item"
-              activeClassName="active"
+              to="#" // disabled for now, goes to /trips
+              className="item inactive"
+              activeClassName="active2"
             >
               <ListItem button className="item-link">
                 <Explore className="item-icon" />
                 <ListItemText
                   className="item-text"
-                  primary="Trips"
+                  primary="Trips - WIP"
                   disableTypography={true}
                 />
               </ListItem>
@@ -78,15 +78,15 @@ class SideBar extends React.Component {
               </ListItem>
             </NavLink>
             <NavLink
-              to="/gallary"
-              className="item"
-              activeClassName="active"
+              to="#" // disabled for now, goes to /gallery
+              className="item inactive"
+              activeClassName="active2"
             >
               <ListItem button className="item-link">
                 <Collections className="item-icon" />
                 <ListItemText
                   className="item-text"
-                  primary="Gallary"
+                  primary="Gallary - WIP"
                   disableTypography={true}
                 />
               </ListItem>
@@ -142,6 +142,15 @@ const SideBarContainer = styled.nav`
         display: block;
         text-decoration: none;
 
+        &.inactive {
+          background-color: grey;
+          cursor: default;
+
+          .item-text,.item-icon {
+            color: #3b3b3b !important;
+          }
+        }
+
         &.active {
           .item-link {
             box-shadow: 0 12px 20px -10px rgba(0, 172, 193,.28), 0 4px 20px 0 rgba(0, 0, 0,.12), 0 7px 8px -5px rgba(0, 172, 193,.2);
@@ -166,6 +175,7 @@ const SideBarContainer = styled.nav`
           display: block;
           padding: 1rem 1.5rem;
           background-color: transparent;
+          cursor: inherit;
 
           .item-icon {
             width: 2.4rem;
