@@ -93,6 +93,9 @@ router.post("/login", (req, res) => {
           experienceLevel: user.experienceLevel,
           specialConsiderations: user.specialConsiderations
         };
+        if (user.adminSecretKey) {
+          payload.adminSecretKey = user.adminSecretKey;
+        }
 
         // Sign token
         jwt.sign(
@@ -152,6 +155,10 @@ router.post("/update", (req, res) => {
       experienceLevel: req.body.experienceLevel,
       specialConsiderations: req.body.specialConsiderations
     };
+
+    if (user.adminSecretKey) {
+      payload.adminSecretKey = user.adminSecretKey;
+    }
 
     user.idNumber = payload.idNumber;
     user.birthDate = payload.birthDate;

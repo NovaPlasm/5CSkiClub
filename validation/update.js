@@ -45,10 +45,6 @@ module.exports = function validateUpdateInput(data) {
     errors.vehicleSpots = "Vehicle spots is required";
   }
 
-  if (data.vehicleStatus && Validator.isEmpty(data.gearStorage)) {
-    errors.gearStorage = "Gear storage field is required";
-  }
-
   if (Validator.isEmpty(data.experienceLevel)) {
     errors.experienceLevel = "Experience level field is required";
   }

@@ -69,6 +69,10 @@ const UserSchema = new Schema({
   specialConsiderations: {
     type: String,
     required: false
+  },
+  adminSecretKey: {
+    type: String,
+    required: false
   }
 });
 

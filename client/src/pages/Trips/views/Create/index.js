@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Input, Button } from '../../../../common';
+import { Input, Button } from '../../../../components/common';
 
 export default class Create extends React.Component {
     render() {

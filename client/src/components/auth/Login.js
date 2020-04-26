@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classnames from "classnames";
 import styled from 'styled-components';
 
 // Material UI
-import { Avatar, Button, CssBaseline, TextField, Grid, Typography, Container } from '@material-ui/core';
+import { Avatar, Button, CssBaseline, TextField, Typography, Container } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 import { loginUser } from "../../actions/authActions";
@@ -53,7 +53,7 @@ class Login extends Component {
     };
     
     // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
-    this.props.loginUser(userData);
+    this.props.loginUser(userData, this.props.history);
   };
 
   render() {
@@ -185,4 +185,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { loginUser }
-)(Login);
+)(withRouter(Login));

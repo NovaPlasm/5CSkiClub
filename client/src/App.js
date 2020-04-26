@@ -1,17 +1,13 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
-import { Provider } from "react-redux";
-import jwt_decode from "jwt-decode";
-
-import setAuthToken from "./utils/setAuthToken";
-import { setCurrentUser, logoutUser } from "./actions/authActions";
-import store from "./store";
-
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import styled from 'styled-components';
-import Logo from './assets/testlogo.png';
-import NavBar from './common/NavBar';
 
-/* Page imports */
+import Logo from './assets/testlogo.png';
+import NavBar from './components/common/NavBar';
+
+/* Logged out page imports */
 import Home from './pages/Home';
 import Trips from './pages/Trips';
 import Gallery from './pages/Gallery';
@@ -20,74 +16,73 @@ import ClubInfo from './pages/ClubInfo';
 import News from './pages/News';
 import NotFound from './pages/NotFound';
 
+/* Auth page imports */
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
-import PrivateRoute from "./components/private-route/PrivateRoute";
-import Dashboard from "./components/dashboard/Dashboard";
 
-// Check for token to keep user logged in
-if (localStorage.jwtToken) {
-  // Set auth token header auth
-  const token = localStorage.jwtToken;
-  setAuthToken(token);
-  // Decode token and get user info and exp
-  const decoded = jwt_decode(token);
-  // Set user and isAuthenticated
-  store.dispatch(setCurrentUser(decoded));
+/* Note we transition to a SPA environment on logged in, so
+ * we let the main logged in app handle page transitions */
+import Dashboard from "./components/dashboard";
+import LoggedIn from "./components/loggedin";
 
-  // Check for expired token
-  const currentTime = Date.now() / 1000; // to get in milliseconds
-  if (decoded.exp < currentTime) {
-    // Logout user
-    store.dispatch(logoutUser());
-    // Redirect to login
-    window.location.href = "./login";
-  }
-}
+class App extends Component {
 
-export default class App extends Component {
-  render() {
+  renderLoggedOut() {
     return (
-      <Provider store={store}>
-        <Switch>
-          <Route exact path="/" render={() => (
-            <Main home>
-              <div className="layer">
-                <div className="videoContainer">
-                  <video autoPlay loop muted poster={'https://i.imgur.com/7FbfWL2.png'}>
-                    <source src={'https://www.dropbox.com/s/s3ymosyhd08wct6/edit.mp4?dl=1'} type='video/mp4' />
-                  </video>
-                </div>
-                <img src={Logo} alt="LINES" />
-                <NavBar />
-                <Home />
+      <Switch>
+        <Route exact path="/" render={() => (
+          <Main home>
+            <div className="layer">
+              <div className="videoContainer">
+                <video autoPlay loop muted poster={'https://i.imgur.com/7FbfWL2.png'}>
+                  <source src={'https://www.dropbox.com/s/s3ymosyhd08wct6/edit.mp4?dl=1'} type='video/mp4' />
+                </video>
               </div>
-            </Main>
-          )} />
-          <Route render={() => (
-            <Main>
-              <div className="layer">
-                <img src={Logo} alt="LINES" />
-                <NavBar />
-                <Switch>
-                  <Route exact path="/login" component={Login} />
-                  <Route exact path="/register" component={Register} />
-                  <Route path="/trips" component={Trips} />
-                  <Route path="/gallery" component={Gallery} />
-                  <Route path="/connect" component={Connect} />
-                  <Route path="/info/:type" component={ClubInfo} />
-                  <Route path="/news" component={News} />
-                  <PrivateRoute exact path="/dashboard" component={Dashboard} />
-                  <Route path="*" component={NotFound} />
-                </Switch>
-              </div>
-            </Main>
-          )} />
-        </Switch>
-      </Provider>
+              <img src={Logo} alt="LINES" />
+              <NavBar />
+              <Home />
+            </div>
+          </Main>
+        )} />
+        <Route render={() => (
+          <Main>
+            <div className="layer">
+              <img src={Logo} alt="LINES" />
+              <NavBar />
+              <Switch>
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/register" component={Register} />
+                <Route path="/trips" component={Trips} />
+                <Route path="/gallery" component={Gallery} />
+                <Route path="/connect" component={Connect} />
+                <Route path="/info/:type" component={ClubInfo} />
+                <Route path="/news" component={News} />
+                <Route exact path="/dashboard" component={Dashboard} />
+                <Route path="*" component={NotFound} />
+              </Switch>
+            </div>
+          </Main>
+        )} />
+      </Switch>
     );
   }
+
+  render() {
+    const { auth } = this.props;
+
+    return auth.isAuthenticated === true ? <LoggedIn /> : this.renderLoggedOut();
+  }
 }
+
+App.propTypes = {
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(App);
 
 const Main = styled.main`
   background: ${props => props.home ? `none`: props.theme.white};

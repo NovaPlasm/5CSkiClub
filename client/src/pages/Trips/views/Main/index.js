@@ -4,7 +4,7 @@ import { Scrollbars } from 'react-custom-scrollbars';
 import { Link } from 'react-router-dom';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import { Button, Input } from '../../../../common';
+import { Button, Input } from '../../../../components/common';
 import filterIcon from '../../../../assets/filter-icon.png';
 
 export default class Main extends React.Component {

@@ -6,7 +6,7 @@ import classnames from "classnames";
 import styled from 'styled-components';
 
 // Material UI
-import { Avatar, Button, CssBaseline, TextField, Grid, Typography, Container, Select, InputLabel, FormControl } from '@material-ui/core';
+import { Avatar, Button, CssBaseline, TextField, Typography, Container, Select, InputLabel, FormControl } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 import { registerUser } from "../../actions/authActions";
@@ -27,7 +27,7 @@ class Register extends Component {
   componentDidMount() {
     // If logged in and user navigates to Register page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+      this.props.history.push("/profile");
     }
   }
 
