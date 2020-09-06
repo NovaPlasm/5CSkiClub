@@ -13,6 +13,10 @@ import Trips from './pages/Trips';
 import Gallery from './pages/Gallery';
 import Connect from './pages/Connect';
 import ClubInfo from './pages/ClubInfo';
+import Education from './pages/Education';
+import Recreation from './pages/Recreation';
+import Team from './pages/Team';
+import Contact from './pages/Contact';
 import News from './pages/News';
 import NotFound from './pages/NotFound';
 
@@ -56,6 +60,12 @@ class App extends Component {
                 <Route path="/gallery" component={Gallery} />
                 <Route path="/connect" component={Connect} />
                 <Route path="/info/:type" component={ClubInfo} />
+                    
+                <Route path="/education/:type" component={Education} />
+                <Route path="/recreation/:type" component={Recreation} />
+                <Route path="/team/:type" component={Team} />
+                <Route path="/contact/:type" component={Contact} />
+                                    
                 <Route path="/news" component={News} />
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route path="*" component={NotFound} />

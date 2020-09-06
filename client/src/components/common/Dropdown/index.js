@@ -49,7 +49,7 @@ function type(input) {
         background-color: rgba(0, 0, 0, 0);
         border: none;
         padding-bottom: 1rem;
-        border-bottom: 0.2rem solid ${props => props.theme.secondary};
+        
         transition: border-bottom 0.4s ease;
         width: 100%;
 
@@ -61,9 +61,9 @@ function type(input) {
 
 const DropdownSpan = styled.span`
     z-index: 1;
-    position: absolute;
-    right: 0;
-    width: 22.5%;
+    position: relative;
+   
+    width: 100%;
 
     & > * {
         display: block;
