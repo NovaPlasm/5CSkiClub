@@ -11,7 +11,7 @@ import {
 // Register User
 export const registerUser = (userData, history) => dispatch => {
   axios
-    .post("http://localhost:5000/api/users/register", userData)
+    .post("http://5cski.org:5000/api/users/register", userData, { headers: { "Access-Control-Allow-Origin": "*"} })
     .then(res => history.push("/login")) // re-direct to login on successful register
     .catch(err =>
       dispatch({
@@ -24,7 +24,7 @@ export const registerUser = (userData, history) => dispatch => {
 // Login - get user token
 export const loginUser = (userData, history) => dispatch => {
   axios
-    .post("http://localhost:5000/api/users/login", userData)
+    .post("http://5cski.org:5000/api/users/login", userData, { headers: { "Access-Control-Allow-Origin": "*"} })
     .then(res => {
       // Save to localStorage
       // Set token to localStorage
@@ -52,7 +52,7 @@ export const loginUser = (userData, history) => dispatch => {
 // Update user - similar to login as we modify user data
 export const updateUser = userData => dispatch => {
   axios
-    .post("http://localhost:5000/api/users/update", userData)
+    .post("http://5cski.org:5000/api/users/update", userData, { headers: { "Access-Control-Allow-Origin": "*"} })
     .then(res => {
       // Save to localStorage
       // Set token to localStorage
