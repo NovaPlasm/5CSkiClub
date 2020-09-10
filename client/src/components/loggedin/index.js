@@ -5,7 +5,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-//import adminkey from "../../key.js";
+import adminkey from "../../key.js";
 
 import SideBar from "./SideBar";
 import Header from "./Header";

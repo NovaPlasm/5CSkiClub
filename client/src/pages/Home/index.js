@@ -9,7 +9,7 @@ export default class Home extends React.Component {
 
         return (
             <Div>
-              <RegisterSection>
+                <RegisterSection>
                     <Link to="/login">
                         <Button
                             variant="contained"
@@ -22,7 +22,6 @@ export default class Home extends React.Component {
                 </RegisterSection>
                 <h1>5C Ski and Snowboard Club</h1>
                 <h3>The Ski and Snowboard Club for the Claremont Colleges</h3>
-              
             </Div>
         );
     }
@@ -34,14 +33,14 @@ const Div = styled.div`
     margin: 7rem auto 0 auto;
 
     h1 {
-        text-color:white;
+        color: white;
         margin-bottom: 1rem;
         margin-top: 0;
         text-align: center;
     }
 
     h3 {
-        text-color:white;
+        color: white;
         margin-top: 0;
         text-align: center;
     }
